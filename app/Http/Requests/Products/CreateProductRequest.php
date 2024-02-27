@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Products;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Spatie\DataTransferObject\Exceptions\UnknownProperties;
-use Src\Users\DTO\ResetPasswordDto;
+use Src\Products\DTO\CreateProductDto;
 
-class ResetPasswordRequest extends FormRequest
+class CreateProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,16 @@ class ResetPasswordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'password' => 'required|string|min:6',
-            'password_confirm' => 'required|string|min:6',
-            'token' => 'required'
+            'name' => 'required|string',
+            'price' => 'required|float',
         ];
     }
 
     /**
      * @throws UnknownProperties
      */
-    public function toDto(): ResetPasswordDto
+    public function toDto(): CreateProductDto
     {
-        return new ResetPasswordDto($this->all());
+        return new CreateProductDto($this->all());
     }
 }

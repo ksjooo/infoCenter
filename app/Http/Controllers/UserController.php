@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\ForgotPasswordRequest;
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\ResetPasswordRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\Users\CreateUserRequest;
+use App\Http\Requests\Users\ForgotPasswordRequest;
+use App\Http\Requests\Users\LoginRequest;
+use App\Http\Requests\Users\ResetPasswordRequest;
+use App\Http\Requests\Users\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Spatie\DataTransferObject\Exceptions\UnknownProperties;

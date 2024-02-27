@@ -8,7 +8,7 @@ use Src\Users\DTO\ForgotPasswordDto;
 
 class ForgotPasswordAction
 {
-    public function __invoke(ForgotPasswordDto $dto): array
+    public function __invoke(ForgotPasswordDto $dto): bool
     {
         $status = Password::sendResetLink(['email' => $dto->email]);
 

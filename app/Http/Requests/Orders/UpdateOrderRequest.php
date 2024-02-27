@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Orders;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Spatie\DataTransferObject\Exceptions\UnknownProperties;
-use Src\Users\DTO\CreateUserDto;
+use Src\Orders\DTO\UpdateOrderDto;
 
-class CreateUserRequest extends FormRequest
+class UpdateOrderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,21 @@ class CreateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:6',
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-            'role' => 'nullable|string'
+            'title' => 'nullable|string',
+            'description' => 'nullable|string',
+            'cabinet' => 'nullable|string',
+            'status' => 'nullable|string',
+            'initiator_name' => 'nullable|string',
+            'initiator_id' => 'nullable|string',
+            'acceptor_id' => 'nullable|string',
         ];
     }
 
     /**
      * @throws UnknownProperties
      */
-    public function toDto(): CreateUserDto
+    public function toDto(): UpdateOrderDto
     {
-        return new CreateUserDto($this->all());
+        return new UpdateOrderDto($this->all());
     }
 }

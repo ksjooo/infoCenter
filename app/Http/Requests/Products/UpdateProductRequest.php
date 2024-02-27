@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Products;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Spatie\DataTransferObject\Exceptions\UnknownProperties;
-use Src\Users\DTO\UpdateUserDto;
+use Src\Products\DTO\UpdateProductDto;
 
-class UpdateUserRequest extends FormRequest
+class UpdateProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,16 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string|min:6',
-            'email' => 'email',
-            'role' => 'nullable|string'
+            'name' => 'string',
+            'price' => 'float',
         ];
     }
 
     /**
      * @throws UnknownProperties
      */
-    public function toDto(): UpdateUserDto
+    public function toDto(): UpdateProductDto
     {
-        return new UpdateUserDto($this->all());
+        return new UpdateProductDto($this->all());
     }
 }
